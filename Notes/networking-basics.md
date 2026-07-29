@@ -34,13 +34,19 @@ A computer that provides information, resources or services to client e.g google
 Example: Your laptop(client) requests a webpage and the website server sends the webpage back
 
 ## IP Addresses
-IPv4
-IPv6 (basic idea only)
-Private IP
-Public IP
-Loopback (127.0.0.1)
-
-This is one of the most important networking topics.
+uAn IP address is an unique numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication. it allows  devices to identify each other and send data to the correct destination
+### IPv4
+-This version uses 32-bit address scheme allowing for a total of 4.2 billion unique addresses
+-typically written in dot-decimal notation,consisting of four decimal numbers separated by dots
+### IPv6 (basic idea only)
+-IPv6 was produced due to the exhaustion of IPv4 which uses a 128-bit address scheme which provides a larger number of addresses.
+-written in hexadecimal and are separated by colons
+### Private IP
+Private IP is used within a :AN network and is assigned by a router or DHCP server. It allows internal communication between different devices without exposing them to the internet as they are not routable on the ppublic internet and require Network Address Translation to access external networks
+### Public IP
+Public IP is globally unique and is assigned by an Internet Service Provider(ISP). It enables devices or networks to communicate directly over the internet. They are visible to external networks and are required for hosting services like websites 
+### Loopback (127.0.0.1)
+Part of the IPv4 loopback range 127.0.0.0/8. Any traffic which is sent to this range is routed internally by the operating systen's TCP?IP stack and never reaches the physical internet interface. Bypassing network hardware makes it essential for testing, diagnostics and local development
 
 ## MAC Addresses
 
@@ -56,6 +62,9 @@ Learn:
 What a packet is
 Why data is split into packets
 What information packets contain
+
+
+
 ## OSI Model
 
 Don't memorise every layer immediately.

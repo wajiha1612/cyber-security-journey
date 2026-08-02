@@ -104,7 +104,7 @@ User Datagram Protocol is a connectionless protocol that sends data without chec
 - Does not guarantee packet order
 - Faster than TCP
 
-###Reliable VS Unreliable
+### Reliable VS Unreliable
 TCP (Reliable)
 - Checks that packets arrive.
 - Resends missing packets.

@@ -4,9 +4,9 @@
 A collection of interconnected devices that communicate and share resources, either by cables or wirless connection
 ### Why networks exist
 Networks have 3 fundamental purposes:
--Resource Sharing:Instead of one internet connection, file storage and software application per person, everyone uses one high quality one
--Communication: enables communication through email, messages and calls instead of physically moving storage devices
--Cantralised Management: IT administrators manage security, updates and user access from a central location
+- Resource Sharing:Instead of one internet connection, file storage and software application per person, everyone uses one high quality one
+- Communication: enables communication through email, messages and calls instead of physically moving storage devices
+- Cantralised Management: IT administrators manage security, updates and user access from a central location
 
 ### Types of devices on a network
 Some types of Devices: Laptops, phones, printers, servers, security cameras etc
@@ -54,10 +54,10 @@ Media Access Control: a unique identifier assigned to a network interface contro
 An IP address is an address assigned to a device by an Internet Service Provider, where it identifies the device's location on a network and is used for communication berween devices across different networks. IP addresses operate at network layer
 A MAC address is a hardware-based address embedded into a device's Network Interface Card by manufactures. It remains constant regardless of the network environment and works within a local network
 #### Key differences:
--Scope: MAC addresses work on local networks, while IP addresses work across networks.
--Permanence: MAC addresses are fixed, while IP addresses can change.
--Layer: MAC addresses use the Data Link layer (Layer 2), while IP addresses use the Network layer (Layer 3).
--Assignment: MAC addresses are assigned by the NIC manufacturer, while IP addresses are assigned by an ISP or router.
+- Scope: MAC addresses work on local networks, while IP addresses work across networks.
+- Permanence: MAC addresses are fixed, while IP addresses can change.
+- Layer: MAC addresses use the Data Link layer (Layer 2), while IP addresses use the Network layer (Layer 3).
+- Assignment: MAC addresses are assigned by the NIC manufacturer, while IP addresses are assigned by an ISP or router.
 
 ## Packets
 A small unit of data which is sent across the network. When information is transmitted, it is first broken down into packets. Each packet travels across the network and is reassembled at the destination to recreate the orginial data e.g webpage or emails
@@ -66,28 +66,28 @@ Splitting data into packets makes communication more efficient and reliable. The
 ### What information packets contain
 A packet consists of the actual data being sent and information that helps it reach the correct destination.
 This information includes:
--Source IP address – where the packet came from.
--Destination IP address – where the packet is going.
--Payload – the actual data being transmitted.
--Sequence number – helps the receiving device put packets back in the correct order.
--Error-checking information – helps detect if the packet was damaged during transmission.
+- Source IP address – where the packet came from.
+- Destination IP address – where the packet is going.
+- Payload – the actual data being transmitted.
+- Sequence number – helps the receiving device put packets back in the correct order.
+- Error-checking information – helps detect if the packet was damaged during transmission.
 
 ## OSI Model
 A framework that explains how data trave;s from one device to another over a network
 ### Why it exists
 OSI model has several uses:
--Standardise how networks communicate.
--Break complex communication into smaller steps.
--Make it easier to troubleshoot network problems.
--Allow hardware and software from different manufacturers to work together.
-The layers:
--Application: Provides network services to applications (e.g. HTTP, DNS, SMTP)
--Presentation: Formats, encryots and compresses data so the recieving device can understand it (e.g SSL/TLS encryption)
--Session: Establishes, manages and terminates communication sessions between devices (e.g login sessions)
--Transport: Ensures data is delivered correctly (TCP/UDP)
--Network: Routes data using IP addresses
--Data Link:	Transfers data on the local network using MAC addresses
--Physical: Sends data as electrical, radio or optical signals
+- Standardise how networks communicate.
+- Break complex communication into smaller steps.
+- Make it easier to troubleshoot network problems.
+- Allow hardware and software from different manufacturers to work together.
+### The layers:
+- Application: Provides network services to applications (e.g. HTTP, DNS, SMTP)
+- Presentation: Formats, encryots and compresses data so the recieving device can understand it (e.g SSL/TLS encryption)
+- Session: Establishes, manages and terminates communication sessions between devices (e.g login sessions)
+- Transport: Ensures data is delivered correctly (TCP/UDP)
+- Network: Routes data using IP addresses
+- Data Link: Transfers data on the local network using MAC addresses
+- Physical: Sends data as electrical, radio or optical signals
 
 ## TCP vs UDP
 Transmission Control Protocol is a connection oriented protocol that ensures data is delivered reliably and in the correct order. Therefore, if a packet is lost, TCP retransmits it

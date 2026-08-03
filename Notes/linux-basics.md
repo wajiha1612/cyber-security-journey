@@ -36,5 +36,15 @@ A text-based interface which allows users to enter commands and recieve output f
 ## Linux File System
 
 ## Basic Navigation Commands
-
+- pwd: shows current location
+- ls: list everything
+- cd: move between folders
+- mkdir: create folders
+- touch: create files
+- nano: edit files
+- cat: view file contents
+- cp: copy files
+- mv: move or rename files
+- rm: delete files
+- rmdir: delete empty folders
 ## File Management Commands

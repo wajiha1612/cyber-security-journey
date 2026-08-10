@@ -109,3 +109,11 @@ This command includes size, usedm available space and Use%(percentage used)
 - CMD: the command/program running e.g bash
 - sleeping processes aren't broken, waiting for something and dont need CPU time
 
+## Linux Networking
+- ip a: inspects and manages network configuration
+  - a means address
+  - lo is the loopback interface; common loopback address 127.0.0.1
+  - etho0: network interface
+- ping: tests if another device or machine is reachable over network
+  - sends ICMP Echo Request and waits for ICMP Echo Reply
+  

@@ -116,4 +116,7 @@ This command includes size, usedm available space and Use%(percentage used)
   - etho0: network interface
 - ping: tests if another device or machine is reachable over network
   - sends ICMP Echo Request and waits for ICMP Echo Reply
-  
+  - calculates rough round trip time
+- curl: HTML returned directly to page
+  - can interact with web servers directly from command line
+- ss -tuln: lets you see network sockets/connections and listening services

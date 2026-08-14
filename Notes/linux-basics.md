@@ -120,3 +120,39 @@ This command includes size, usedm available space and Use%(percentage used)
 - curl: HTML returned directly to page
   - can interact with web servers directly from command line
 - ss -tuln: lets you see network sockets/connections and listening services
+  - TCP vs UDP
+  - listening ports
+  - LISTEN: waiting for connections
+  - Port  53: DNS
+  - 127.0.0.53 = local.loopback address
+
+  ## Packages, Services & Logs
+  package: software that has been prepared so Linux can install and manage it e.g Ubuntu uses a package manager called APT
+  - APT manages software
+
+    ### Commands
+  - apt  list --installed: shows installed packages
+  - apt search <name>: searches for a package
+  - sudo apt update: updates the list of available packages
+  - sudo apt install <package>: installs a package
+
+  ### Services: 
+  program/process that runs in the background and provides some function to the system e.g SSH server. DNS server, web server and logging services
+  #### In cyber: 
+  Each service provides a way for someone to interact with the machine therefore need to know which services are running and if they are suppose to be running
+  ### Commands
+  - systemctl status: gives you info about the system and its services 
+## Logs
+Linux keeps logs containg information about what happens on the system
+This includes:
+- login attempts
+- system events
+- errors
+- services starting/stopping
+- suspicious activity
+
+### commands
+  - ls /var/log: can see system log
+  - journalctl: view system journal (on systems using systemd)
+    - journalctl -n 20: gives 20 most recent entries
+  

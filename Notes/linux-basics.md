@@ -156,3 +156,71 @@ This includes:
   - journalctl: view system journal (on systems using systemd)
     - journalctl -n 20: gives 20 most recent entries
   
+
+## Pipes, Redirection and Test Processing
+### Pipes: 
+- takes what this command produces and feeds it into the next command
+- does not change the orginial data
+- e.g. ps| grep systemd : shows processes and output lines with systemd
+
+### Grep
+- text searching/filtering tool
+- e.g. grep apple: keep the lines containing apple
+- -l: counts the number of lines
+
+### Redirection:
+- command --> terminal or command --> file
+- e.g. ps > processes.txt : runs the ps command and puts its output into processes.txt
+- ->> append instead of overwrite(dash is not included)
+
+### Sort
+- sort lines
+- e.g. printf"ssh\nhttp\nssh\n...." > services.txt: sorts temporarily
+- e.g. sort services.txt > sorted services.txt: sorts permanently
+
+### Uniq
+- removes adjacent duplicates
+- Uniq -c: counts occurences e.g sort service.txt|uniq -c will count how many of each
+- head: beginning of file
+- tail: end of file
+- -n: number of lines
+
+## Finding Files & Bash Basics
+- find: used to search for files
+- find . -name(filename): find something with specific name
+- find . -type f or d: find files or directories
+- . : current directory
+- .. : parent directory
+- which: shows where an executable is located
+
+### Environment Variables
+These variables store information available to the shell and programs
+- echo:
+  -$USER: current username
+  -$HOME: user's home directory
+  -$PATH: shows directories where Bash looks for executable commands
+  - : : separated directories in $PATH
+
+### Bash Variable
+e.g name="Waj"
+e.g echo "$name"
+e.g current_user=$(whoami)
+e.g echo "$current_user"
+- if → condition → then → action → fi
+- for → do → done
+- while → condition is true → do --> done
+
+### Bash Scripts
+- file containing commands that can be executable together
+#!/bin/bash
+
+echo "Security Investigation"
+echo "User: $USER"
+echo "Hostname: $(hostname)"
+
+ps | head -n 5
+
+- shebang: tells Linux to use Bash to interpret the script
+- chmod +x systeminfo.sh adding executing permission to script
+- ./systeminfo.sh running script in the current directory
+

@@ -68,4 +68,35 @@ tools = ["nmap", "Wireshark", "Python"]
 for tool in tools:
     print(tool)
 
-#
+#tuples
+#tools = ("nmap","Wireshark")
+#tools[0] = "Burp Suite"# will cause an error as tuples cannot be changed
+
+#Sets:collection of values where dupllicates are utomatically removed
+ports = {22, 80, 443, 80, 22}
+
+print(ports) #would get 22,80,443
+#can add or remove using .add and .remove
+
+#creating a function
+def greet():
+    print("Hello!")
+
+greet()
+
+#function can accept parameters
+def greet(name):
+    print("Hello", name)
+
+greet("Waj")
+
+#return can stop a function early
+def check_user(username):
+    if username == "admin":
+        return "Admin"
+    
+    return "Regular user"
+
+print(check_user("admin")) #matches and function returns Admin
+print(check_user("waj")) #does not continue to the next return
+

@@ -72,7 +72,7 @@ for tool in tools:
 #tools = ("nmap","Wireshark")
 #tools[0] = "Burp Suite"# will cause an error as tuples cannot be changed
 
-#Sets:collection of values where dupllicates are utomatically removed
+#Sets:collection of values where duplicates are utomatically removed
 ports = {22, 80, 443, 80, 22}
 
 print(ports) #would get 22,80,443
@@ -100,3 +100,67 @@ def check_user(username):
 print(check_user("admin")) #matches and function returns Admin
 print(check_user("waj")) #does not continue to the next return
 
+#reading testlog.txt file through python
+with open("testlog.txt","r") as file:
+    data = file.read()
+
+print(data)
+
+#reading same file line by line
+with open("testlog.txt","r") as file:
+    for line in file:
+        print(line)
+
+#modify your loop so that it prints only the failed login lines
+with open("testlog.txt","r") as file:
+    for line in file:
+        if "failed" in line :
+            print(line)
+
+#print just the IP from a failed line
+with open("testlog.txt","r") as file:
+    for line in file:
+        if "failed" in line:
+            parts = line.split()
+            print(parts[3])
+
+#counting value of failed attempt ip
+failed_attempts = {}
+
+with open("testlog.txt", "r") as file:
+    for line in file:
+        if "failed" in line:
+            parts = line.split()
+            ip = parts[3]
+
+            if ip in failed_attempts:
+                failed_attempts[ip] = failed_attempts[ip] + 1
+            else:
+                failed_attempts[ip] = 1
+
+print(failed_attempts)
+
+for ip, count in failed_attempts.items():
+    print(f"IP: {ip} - Failed attempts: {count}")
+
+#write to a file(write/replace)
+with open("report.txt","w") as file:
+    file.write("Security report")
+
+#appending to file(adding to the end)
+with open("report.txt", "a") as file:
+    file.write("\nSecond line") # donest automatically add new line so use \n
+
+#error
+#with open("does_not_exist.txt", "r") as file:
+#   data = file.read()
+
+#exception handling
+try:
+    with open("does_not_exist.txt", "r") as file:
+        data = file.read()
+
+    print(data)
+
+except FileNotFoundError:
+    print("The file was not found")

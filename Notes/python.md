@@ -103,3 +103,7 @@ list = ["ItemA" , "ItemB" , "ItemC"]
 ### checking all items
 - for key, value in user.items():
     - print(key, value)
+
+# Security Log Analyser process:
+- function can take data through parameters and return result using return
+- dictionaries can store count using the ip address key

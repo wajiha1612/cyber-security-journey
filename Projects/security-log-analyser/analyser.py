@@ -1,8 +1,8 @@
 import argparse #so program can recieve argument from terminal
 
-parser = argparse.ArgumentParser()
-parser.add_argument("logfile")
-args = parser.parse_args()
+parser = argparse.ArgumentParser(description="Analyse authentication logs for suspicious activity") #creates parser and describes using --help
+parser.add_argument("logfile", help="Path to the authentication log file") #what the parser is and explains user what to provide
+args = parser.parse_args() #collects the argument user entered
 
 def count_failed_logins(file):
     failed_attempts = {}

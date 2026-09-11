@@ -1,4 +1,5 @@
 import argparse #so program can recieve argument from terminal
+from datetime import datetime 
 
 parser = argparse.ArgumentParser(description="Analyse authentication logs for suspicious activity") #creates parser and describes using --help
 parser.add_argument("logfile", help="Path to the authentication log file") #what the parser is and explains user what to provide
@@ -16,6 +17,10 @@ def count_failed_logins(file):
 
             if not part[4].startswith("ip="):
                 continue
+
+            timestamp = f"{part[0]} {part[1]}"
+            datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S") #timestamp is  object
+            datetime
             
             ip = part[4]            
             ip = ip.replace("ip=","")

@@ -10,7 +10,14 @@ def count_failed_logins(file):
     for line in file:
         if "FAILED" in line:
             part = line.split()
-            ip = part[4] 
+
+            if len(part) < 5: #check if index 4 exists
+                continue
+
+            if not part[4].startswith("ip="):
+                continue
+            
+            ip = part[4]            
             ip = ip.replace("ip=","")
             
             #counting failed attempts for each ip
@@ -36,4 +43,6 @@ def main():
 
 
 main()
+
+
 

@@ -1,5 +1,5 @@
 import argparse #so program can recieve argument from terminal
-from datetime import datetime 
+from datetime import datetime, timedelta 
 
 parser = argparse.ArgumentParser(description="Analyse authentication logs for suspicious activity") #creates parser and describes using --help
 parser.add_argument("logfile", help="Path to the authentication log file") #what the parser is and explains user what to provide
@@ -19,21 +19,27 @@ def count_failed_logins(file):
                 continue
 
             timestamp = f"{part[0]} {part[1]}"
-            datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S") #timestamp is  object
-            datetime
+            timestamp = datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S") #timestamp is  object
             
             ip = part[4]            
             ip = ip.replace("ip=","")
-            
+
             #counting failed attempts for each ip
             if ip in failed_attempts:
-                failed_attempts[ip] = failed_attempts[ip] + 1
+                failed_attempts[ip].append(timestamp)
             else:
-                failed_attempts[ip] = 1
-                    
-    return(failed_attempts)
+                failed_attempts[ip] = [timestamp]
 
-def main():
+    suspicious_ips = []
+
+    for ip, timestamps in failed_attempts.items():
+        for i in range(0,len(timestamps)-2):
+            if timestamps[i+2] - timestamps[i] <= timedelta(minutes=5):
+                if ip not in suspicious_ips: #avoid duplicate ips
+                    suspicious_ips.append(ip)           
+    return(suspicious_ips)
+
+def main(): #needs to work with list rather than dictionary
     try:
         with open(args.logfile,"r") as file:
             result = count_failed_logins(file)
@@ -42,12 +48,9 @@ def main():
         print("Log file not found")
         return #means leave main() function and stop the rest of the program
 
-    for ip, count in result.items():
-        if count >= 3:
-            print(f"IP: {ip} - Failed attempts: {count}")
+    for ip in result:
+        print(f"Suspicious IP:{ip}")
 
-
-main()
-
+main() 
 
 

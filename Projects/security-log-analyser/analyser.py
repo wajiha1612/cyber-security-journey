@@ -30,13 +30,14 @@ def count_failed_logins(file):
             else:
                 failed_attempts[ip] = [timestamp]
 
-    suspicious_ips = []
+    suspicious_ips = {}
 
     for ip, timestamps in failed_attempts.items():
         for i in range(0,len(timestamps)-2):
             if timestamps[i+2] - timestamps[i] <= timedelta(minutes=5):
+                window = [timestamps[i], timestamps[i+1], timestamps[i+2]]
                 if ip not in suspicious_ips: #avoid duplicate ips
-                    suspicious_ips.append(ip)           
+                    suspicious_ips[ip] = window           
     return(suspicious_ips)
 
 def main(): #needs to work with list rather than dictionary
@@ -48,9 +49,12 @@ def main(): #needs to work with list rather than dictionary
         print("Log file not found")
         return #means leave main() function and stop the rest of the program
 
-    for ip in result:
+    for ip, window in result.items():
         print(f"Suspicious IP:{ip}")
+        print(f"Failed attempts:{window}")
 
+        for timestamp in window:
+            print(timestamp.strftime("%H:%M:%S"))
 main() 
 
 

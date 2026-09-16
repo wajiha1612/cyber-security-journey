@@ -1,11 +1,7 @@
-import argparse #so program can recieve argument from terminal
+import argparse 
 from datetime import datetime, timedelta 
 
-parser = argparse.ArgumentParser(description="Analyse authentication logs for suspicious activity") #creates parser and describes using --help
-parser.add_argument("logfile", help="Path to the authentication log file") #what the parser is and explains user what to provide
-args = parser.parse_args() #collects the argument user entered
-
-def count_failed_logins(file):
+def detect_suspicious_logins(file):
     failed_attempts = {}
 
     for line in file:
@@ -19,10 +15,9 @@ def count_failed_logins(file):
                 continue
 
             timestamp = f"{part[0]} {part[1]}"
-            timestamp = datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S") #timestamp is  object
-            
-            ip = part[4]            
-            ip = ip.replace("ip=","")
+            timestamp = datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S") 
+                    
+            ip = part[4].replace("ip=","")
 
             #counting failed attempts for each ip
             if ip in failed_attempts:
@@ -40,26 +35,28 @@ def count_failed_logins(file):
                     suspicious_ips[ip] = window           
     return(suspicious_ips)
 
-def main(): #needs to work with list rather than dictionary
+def main(): 
+    parser = argparse.ArgumentParser(description="Analyse authentication logs for suspicious activity") 
+    parser.add_argument("logfile", help="Path to the authentication log file") 
+    args = parser.parse_args() 
+
     try:
         with open(args.logfile,"r") as file:
-            result = count_failed_logins(file)
+            result = detect_suspicious_logins(file)
 
     except FileNotFoundError:
         print("Log file not found")
-        return #means leave main() function and stop the rest of the program
+        return 
 
     for ip, window in result.items():
-        formatted_times = []
-
-        for timestamp in window:
-            formatted_times.append(timestamp.strftime("%H:%M:%S")) #format this as a string
+        formatted_times = [timestamp.strftime("%H:%M:%S") for timestamp in window]
 
         time_text = ", ".join(formatted_times)
 
         print(f"Suspicious IP: {ip}")
         print(f"Failed attempts: {time_text}")
-
+        print(f"Reason: {len(window)} failed login attempts within 5 minutes")
         
-main() 
+if __name__ == "__main__":
+    main() 
 

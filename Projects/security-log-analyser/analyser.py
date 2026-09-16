@@ -50,11 +50,16 @@ def main(): #needs to work with list rather than dictionary
         return #means leave main() function and stop the rest of the program
 
     for ip, window in result.items():
-        print(f"Suspicious IP:{ip}")
-        print(f"Failed attempts:{window}")
+        formatted_times = []
 
         for timestamp in window:
-            print(timestamp.strftime("%H:%M:%S"))
-main() 
+            formatted_times.append(timestamp.strftime("%H:%M:%S")) #format this as a string
 
+        time_text = ", ".join(formatted_times)
+
+        print(f"Suspicious IP: {ip}")
+        print(f"Failed attempts: {time_text}")
+
+        
+main() 
 
